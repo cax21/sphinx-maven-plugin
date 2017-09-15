@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; sphinx-maven-plugin 1.6.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="sphinx-maven-plugin 1.6.1 documentation" href="index.html"/>
+        <link rel="next" title="Frequently Asked Questions" href="faq.html"/>
+        <link rel="prev" title="Using the Plugin" href="basic-usage.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> sphinx-maven-plugin
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Using the Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#executing-within-site-lifecycle">Executing within <code class="docutils literal highlight highlight-default"><span></span><span class="n">site</span></code> lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#executing-within-normal-lifecycle">Executing within normal lifecycle</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#using-plantuml">Using PlantUML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">GraphViz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plantuml-config">PlantUML Config</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#using-inline-syntax-highlighting">Using inline syntax highlighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#a-note-on-memory-usage">A note on memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sample-documentation-config">Sample Documentation Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sphinx-maven-plugin</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal highlight highlight-default"><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">maven</span></code> plugin has these configuration options:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="60%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Default value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">sourceDirectory</span></code></td>
+<td>The directory containing the documentation source.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span>${basedir}/src/site/sphinx</code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">outputDirectory</span></code></td>
+<td>The directory where the generated output will be placed.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span>${project.reporting.outputDirectory}</code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">outputName</span></code></td>
+<td>The base name used to create the report’s output file(s).</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">Python</span><span class="o">-</span><span class="n">Sphinx</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">name</span></code></td>
+<td>The name of the report.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">Sphinx</span><span class="o">-</span><span class="n">Docs</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">description</span></code></td>
+<td>The description of the report.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">Documentation</span> <span class="n">via</span> <span class="n">sphinx</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">builder</span></code></td>
+<td>The builder to use. See the <a class="reference external" href="http://sphinx.pocoo.org/man/sphinx-build.html?highlight=command%20line">Sphinx commandline documentation</a> for a list of possible builders.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">html</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">verbose</span></code></td>
+<td>Whether Sphinx should generate verbose output.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">true</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">warningsAsErrors</span></code></td>
+<td>Whether warnings should be treated as errors.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">false</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">force</span></code></td>
+<td>Whether Sphinx should generate output for all files instead of only the changed ones.</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">false</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">tags</span></code></td>
+<td>Additional tags to pass to Sphinx. See the <a class="reference external" href="http://sphinx.pocoo.org/markup/misc.html#tags">Sphinx tag documentation</a> for more information.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal highlight highlight-default"><span></span><span class="n">asReport</span></code></td>
+<td>Whether documentation should be generated as a project report (keep default Maven site).</td>
+<td><code class="docutils literal highlight highlight-default"><span></span><span class="n">false</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-plantuml">
+<h1>Using PlantUML<a class="headerlink" href="#using-plantuml" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal highlight highlight-default"><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">maven</span></code> plugin has support for converting uml described using <em>PlantUML</em> text format within a
+<em>.rst</em> file to an image. It automatically references the image as part of the documentation in the appropriate
+place where the UML was defined in the reStructured Text source file. As mentioned before, PlantUML requires
+<strong>GraphViz</strong> to be installed on the local machine.</p>
+<div class="section" id="id1">
+<h2>GraphViz<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>GraphViz is a software package of opensource tools for drawing graphs described in DOT language scripts. More
+information regarding <a class="reference external" href="http://www.graphviz.org">GraphViz</a> can be found in their website. Windows installer can be downloaded from the
+website and the package is available as part of package management provided by the individual operating system
+vendor.</p>
+<p>Remember this is required only for building html pages containing GraphViz generated images. You don’t need
+this library for hosting the generated documentation.</p>
+</div>
+<div class="section" id="plantuml-config">
+<h2>PlantUML Config<a class="headerlink" href="#plantuml-config" title="Permalink to this headline">¶</a></h2>
+<p class="plantuml">
+<img src="_images/plantuml-ddb5350d37e3df71f435fd9d20a0756e4287d1aa.png" alt="&#64;startuml
+state siteBuildProcess {
+    [*] -&gt; buildJavaDocs
+    buildJavaDocs: Using maven-javadoc-plugin
+    buildJavaDocs -&gt; buildSphinxDocs
+    buildSphinxDocs: Using Sphinx and other extensions as needed.
+    buildSphinxDocs -&gt; [*]
+}
+&#64;enduml" />
+</p>
+<p>You will need to add some additional configuration options to your <code class="docutils literal highlight highlight-default"><span></span><span class="n">conf</span><span class="o">.</span><span class="n">py</span></code> file (usually in
+<code class="docutils literal highlight highlight-default"><span></span><span class="n">src</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">sphinx</span></code>) to tell Sphinx how to work with <em>.. uml::</em> directives. The steps involved are</p>
+<ul>
+<li><p class="first">You will need to add ‘sphinxcontrib-plantuml’ as an extension within the extension’s list defined within
+<code class="docutils literal highlight highlight-default"><span></span><span class="n">conf</span><span class="o">.</span><span class="n">py</span></code></p>
+</li>
+<li><p class="first">You will also have to import an environment variable’s value within <code class="docutils literal highlight highlight-default"><span></span><span class="n">conf</span><span class="o">.</span><span class="n">py</span></code>.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">plantuml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;plantuml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Please note that it is absolutely necessary that the environment variable’s value is assigned to the variable
+<em>plantuml</em>, so that the extension works as expected.</p>
+</div>
+</div>
+<div class="section" id="using-inline-syntax-highlighting">
+<h1>Using inline syntax highlighting<a class="headerlink" href="#using-inline-syntax-highlighting" title="Permalink to this headline">¶</a></h1>
+<p>You can use this extension as follows:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">highlight</span><span class="p">::</span> rst
+
+<span class="p">..</span> <span class="ow">role</span><span class="p">::</span> python(code)
+    <span class="nc">:language:</span> <span class="nf">python</span>
+
+<span class="p">..</span> <span class="ow">role</span><span class="p">::</span> latex(code)
+    <span class="nc">:language:</span> <span class="nf">latex</span>
+
+Now here are latex command <span class="na">:latex:</span><span class="nv">`\\setlength`</span> and python command
+<span class="na">:python:</span><span class="nv">`import`</span>, created by <span class="s">``:python:`import```</span>.  Here is a
+<span class="na">:literal:</span><span class="nv">`literal`</span>, which stays a literal, and
+<span class="nc">:code:`.. highlight::</span> <span class="nf">rst` makes code role look as it looks.</span>
+</pre></div>
+</div>
+<p>Which is rendered as follows:</p>
+<blockquote>
+<div>Now here are latex command <code class="code latex docutils literal highlight highlight-latex"><span></span> <span class="k">\setlength</span></code> and python command
+<code class="code python docutils literal highlight highlight-python"><span></span><span class="kn">import</span></code>, created by <code class="docutils literal highlight highlight-rst"><span></span><span class="na">:python:</span><span class="nv">`import`</span></code>.  Here is a
+<tt class="docutils literal">literal</tt>, which stays a literal, and
+<code class="code docutils literal highlight highlight-rst"><span></span><span class="p">..</span> <span class="ow">highlight</span><span class="p">::</span> rst</code> makes code role look as it looks.</div></blockquote>
+</div>
+<div class="section" id="a-note-on-memory-usage">
+<h1>A note on memory usage<a class="headerlink" href="#a-note-on-memory-usage" title="Permalink to this headline">¶</a></h1>
+<p>Sphinx is run via <a class="reference external" href="http://www.jython.org/">Jython</a> which will generate lots of small classes for various Python constructs. This means
+that the plugin will use a fair amount of memory, especially PermGen space (a moderate plugin run will likely
+use about 80mb of PermGen space). Therefore we suggest to either run maven with at least 256mb of heap and
+128mb of PermGen space:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>MAVEN_OPTS=&quot;-Xmx256m -XX:MaxPermSize=128m&quot; mvn site
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-documentation-config">
+<h1>Sample Documentation Config<a class="headerlink" href="#sample-documentation-config" title="Permalink to this headline">¶</a></h1>
+<p>Sphinx looks at <cite>conf.py</cite> in the documentation source directory for building the final HTML file. This file
+contains some basic settings for getting the desired output. The configuration used for generating the plugin
+documentation is given below:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">recommonmark.parser</span> <span class="kn">import</span> <span class="n">CommonMarkParser</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;My Project&#39;</span>
+<span class="n">copyright</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;YYYY, John Doe&#39;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span>
+<span class="n">release</span> <span class="o">=</span> <span class="s1">&#39;1.0.0&#39;</span>
+
+<span class="c1"># General options</span>
+<span class="n">needs_sphinx</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span>
+<span class="n">master_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
+<span class="n">pygments_style</span> <span class="o">=</span> <span class="s1">&#39;tango&#39;</span>
+<span class="n">add_function_parentheses</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span> <span class="s1">&#39;javasphinx&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;sphinxcontrib.inlinesyntaxhighlight&#39;</span><span class="p">,</span> <span class="s1">&#39;sphinxcontrib.plantuml&#39;</span><span class="p">]</span>
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+<span class="n">exclude_trees</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.build&#39;</span><span class="p">]</span>
+<span class="n">source_suffix</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.rst&#39;</span><span class="p">,</span> <span class="s1">&#39;.md&#39;</span><span class="p">]</span>
+<span class="n">source_encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span>
+<span class="n">source_parsers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="n">CommonMarkParser</span>
+<span class="p">}</span>
+
+<span class="c1"># HTML options</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+<span class="n">html_short_title</span> <span class="o">=</span> <span class="s2">&quot;my-project&quot;</span>
+<span class="n">htmlhelp_basename</span> <span class="o">=</span> <span class="s1">&#39;my-project-doc&#39;</span>
+<span class="n">html_use_index</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">html_show_sourcelink</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+
+<span class="c1"># PlantUML options</span>
+<span class="n">plantuml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;plantuml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic-usage.html" class="btn btn-neutral" title="Using the Plugin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Trustin Lee et al.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="github-fork-ribbon-wrapper right">
+  <div class="github-fork-ribbon">
+    <a href="https://github.com/trustin/sphinx-maven-plugin">Fork me on GitHub</a>
+  </div>
+</div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.6.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

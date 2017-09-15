@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sphinx-maven-plugin &mdash; sphinx-maven-plugin 1.6.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="stylesheet" href="_static/overrides.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="sphinx-maven-plugin 1.6.1 documentation" href="#"/>
+        <link rel="next" title="Using the Plugin" href="basic-usage.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> sphinx-maven-plugin
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Using the Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#executing-within-site-lifecycle">Executing within <code class="docutils literal highlight highlight-default"><span></span><span class="n">site</span></code> lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#executing-within-normal-lifecycle">Executing within normal lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#using-plantuml">Using PlantUML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#using-inline-syntax-highlighting">Using inline syntax highlighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#a-note-on-memory-usage">A note on memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#sample-documentation-config">Sample Documentation Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">sphinx-maven-plugin</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>sphinx-maven-plugin</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-maven-plugin">
+<h1>sphinx-maven-plugin<a class="headerlink" href="#sphinx-maven-plugin" title="Permalink to this headline">¶</a></h1>
+<p>The <em>sphinx-maven-plugin</em> is a <a class="reference external" href="http://maven.apache.org/plugins/maven-site-plugin/">Maven site plugin</a> that uses <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> to generate the main documentation.
+Sphinx itself was originally created by the Python community for the new Python documentation. It uses a
+plain text format called <a class="reference external" href="http://docutils.sf.net/rst.html">reStructured Text</a> which it then compiles into a variety of documentation formats
+such as HTML, LaTeX (for PDF), epub. reStructured Text is similar to <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a> but - at least via Sphinx -
+has better support for multi-page documentation.</p>
+<p>The <em>sphinx-maven-plugin</em> is BSD licensed just as Sphinx itself is. The plugin was created for Java-based
+applications. The idea was to introduce the benefits of reStructured Text format and Sphinx documentation
+generator for generating documentation for custom applications.</p>
+<p>This plugin contains the python packages and its dependencies that are needed to generate the documentation
+using <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a>. The plugin only supports the default themes that come along with <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> python package.
+It also incorporates other open source plugins that are helpful while explaining complex concepts within
+documentation. These plugins are:</p>
+<div class="section" id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+<p>Besides the extensions distributed with <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a>, this plugin includes the following extensions:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.python.org/pypi/sphinxcontrib-plantuml">sphinxcontrib-plantuml</a> - enables embedding <a class="reference external" href="http://plantuml.sourceforge.net/">PlantUML</a> diagrams</li>
+<li><a class="reference external" href="http://sphinxcontrib-inlinesyntaxhighlight.readthedocs.org/en/latest/">sphinxcontrib-inlinesyntaxhighlight</a> - enables syntax-highlighting inline literals</li>
+<li><a class="reference external" href="https://recommonmark.readthedocs.org/en/latest/">recommonmark</a> - adds Markdown support</li>
+<li><a class="reference external" href="http://bronto.github.io/javasphinx/">javasphinx</a> - adds the Java domain</li>
+</ul>
+</div>
+<div class="section" id="credits-and-changes">
+<h2>Credits and changes<a class="headerlink" href="#credits-and-changes" title="Permalink to this headline">¶</a></h2>
+<p>This plugin was originally written by <a class="reference external" href="https://github.com/tomdz/sphinx-maven">Thomas Dudziak</a>. <a class="reference external" href="https://github.com/balasridhar/sphinx-maven">Bala Sridhar</a> since then upgraded Sphinx to 1.3.1
+and added PlantUML and JavaSphinx support in his fork. I’d like to appreciate their effort that did all the
+heavy lifting. This fork includes the following additional changes:</p>
+<div class="section" id="sep-2017">
+<h3>1.6.1 (16-Sep-2017)<a class="headerlink" href="#sep-2017" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Ship pre-compiled Python classes instead of source files</li>
+<li>Add some missing transitive dependencies of Sphinx and JavaSphinx</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>1.6.0 (15-Sep-2017)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Updates:<ul>
+<li>alabaster 0.7.10</li>
+<li>Babel 2.5.1</li>
+<li>CommonMark 0.7.4</li>
+<li>docutils 0.14</li>
+<li>javalang 0.11.0</li>
+<li>Jinja2 2.9.6</li>
+<li>Jython 2.7.1</li>
+<li>MarkupSafe 1.0</li>
+<li>pytz 2017.2</li>
+<li>requests 2.18.4</li>
+<li>Sphinx 1.6.3</li>
+<li>sphinx_rtd_theme 0.2.5b1</li>
+<li>sphinxcontrib-inlinesyntaxhighlight HEAD</li>
+<li>sphinxcontrib-plantuml 0.8.1</li>
+</ul>
+</li>
+<li>New themes:<ul>
+<li>sphinx_bootstrap_theme 0.6.0</li>
+<li>guzzle_sphinx_theme 0.7.11</li>
+</ul>
+</li>
+<li>New dependencies:<ul>
+<li>certifi 2017.7.27.1</li>
+<li>chardet 3.0.4</li>
+<li>idna 2.6</li>
+<li>typing 3.6.2</li>
+<li>urllib3 1.22</li>
+</ul>
+</li>
+<li>Miscellaneous:<ul>
+<li>Use Maven wrapper and Maven 3.5.0</li>
+<li>Update Maven plugins</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="final-28-sep-2016">
+<h3>1.5.3.Final (28-Sep-2016)<a class="headerlink" href="#final-28-sep-2016" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Upgraded Sphinx to 1.5.2<ul>
+<li>Added requests 2.13.0</li>
+</ul>
+</li>
+<li>Upgraded CommonMark to 0.7.3</li>
+<li>Upgraded docutils to 0.13.1</li>
+<li>Upgraded future to 0.16.0</li>
+<li>Upgraded javalang to 0.10.1</li>
+<li>Upgraded javasphinx to 0.9.15</li>
+<li>Upgraded Jinja2 to 2.9.5</li>
+<li>Upgraded PlantUML to 8056</li>
+<li>Upgraded Pygments to 2.2.0</li>
+<li>Upgraded pytz to 2016.10</li>
+<li>Upgraded sphinx_rtd_theme to master (eef98b3)</li>
+<li>Added PyYAML 3.12 so that a user can read a YAML file from conf.py</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>1.5.2.Final (28-Sep-2016)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed a bug where line ending conversion is not performed on CSS files</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>1.5.1.Final (28-Sep-2016)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Made line ending conversion code public so that it can be reused from a non-Maven environment</li>
+</ul>
+</div>
+<div class="section" id="final-26-sep-2016">
+<h3>1.5.0.Final (26-Sep-2016)<a class="headerlink" href="#final-26-sep-2016" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Made <code class="docutils literal highlight highlight-default"><span></span><span class="n">SphinxRunner</span></code> public and independent from Maven API so that it can be invoked from a non-Maven environment</li>
+</ul>
+</div>
+<div class="section" id="final-12-sep-2016">
+<h3>1.4.0.Final (12-Sep-2016)<a class="headerlink" href="#final-12-sep-2016" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added the <code class="docutils literal highlight highlight-default"><span></span><span class="n">asReport</span></code> option to keep the default Maven site</li>
+<li>Upgraded Sphinx to 1.4.6</li>
+<li>Upgraded alabaster to 0.7.9</li>
+<li>Upgraded Babel to 2.3.4</li>
+<li>Upgraded CommonMark to 0.7.2</li>
+<li>Upgraded imagesize to 0.7.1</li>
+<li>Upgraded Pygments to 2.1.3</li>
+<li>Upgraded pytz to 2016.6.1</li>
+<li>Upgraded sphinx_rtd_theme to 0.1.10a0</li>
+</ul>
+</div>
+<div class="section" id="final-25-apr-2016">
+<h3>1.3.1.Final (25-Apr-2016)<a class="headerlink" href="#final-25-apr-2016" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The line separators of the generated text files are now converted to the line separator of the current platform, so that the version control systems like Git do not complain about inconsistent line endings.</li>
+</ul>
+</div>
+<div class="section" id="final-01-apr-2016">
+<h3>1.3.0.Final (01-Apr-2016)<a class="headerlink" href="#final-01-apr-2016" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Upgraded Sphinx to 1.4.0<ul>
+<li>Added imagesize 0.7.0</li>
+</ul>
+</li>
+<li>Upgraded Pygments to 2.1.3</li>
+<li>Upgraded pytz to 2016.3</li>
+<li>Upgraded CommonMark to the latest master (0.6.3+)<ul>
+<li>Added future 0.15.2 (<code class="docutils literal highlight highlight-default"><span></span><span class="n">builtins</span></code> only)</li>
+</ul>
+</li>
+<li>Upgraded reCommonMark to the latest master (0.4.0+)<ul>
+<li>Fixed the issues with renames in CommonMark</li>
+</ul>
+</li>
+<li>Upgraded PlantUML to 8037</li>
+<li>Updated sphinx_rtd_theme to the latest master</li>
+<li>Updated sphinxcontrib/plantuml to the latest master</li>
+</ul>
+</div>
+<div class="section" id="final-07-jan-2016">
+<h3>1.2.1.Final (07-Jan-2016)<a class="headerlink" href="#final-07-jan-2016" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Downgraded Sphinx to the latest stable (1.3.3+) for stability</li>
+<li>Downgraded Jython to 2.7.0 due to an <code class="docutils literal highlight highlight-default"><span></span><span class="n">mkdirs</span></code> error on Linux</li>
+<li>Upgraded Pygments to the latest master (pre-2.1)</li>
+<li>Upgraded Alabaster to 0.7.7</li>
+<li>Upgraded reCommonMark to 0.4.0</li>
+<li>Upgraded Babel to 2.2.0</li>
+</ul>
+</div>
+<div class="section" id="final-05-dec-2015">
+<h3>1.2.0.Final (05-Dec-2015)<a class="headerlink" href="#final-05-dec-2015" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added <a class="reference external" href="http://sphinxcontrib-inlinesyntaxhighlight.readthedocs.org/en/latest/">sphinxcontrib-inlinesyntaxhighlight</a> extension</li>
+<li>Added <a class="reference external" href="http://bronto.github.io/javasphinx/">javasphinx</a> extension back again<ul>
+<li><code class="docutils literal highlight highlight-default"><span></span><span class="n">javasphinx</span><span class="o">-</span><span class="n">apidoc</span></code> support has not been added back, because I’m not convinced it’s more useful than
+Javadoc</li>
+</ul>
+</li>
+<li>Updated Sphinx to the latest master (1.4.0a+)</li>
+<li>Updated Pygments to the latest master (pre-2.1)</li>
+</ul>
+</div>
+<div class="section" id="final-25-nov-2015">
+<h3>1.1.0.Final (25-Nov-2015)<a class="headerlink" href="#final-25-nov-2015" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Updated Sphinx to the latest master</li>
+<li>Updated both Java and Python dependencies</li>
+<li>Reduced the time taken for launching Sphinx</li>
+<li>Removed JavaSphinx and PDF support</li>
+<li>Fixed Windows-related issues</li>
+</ul>
+</div>
+</div>
+<div class="section" id="read-more">
+<h2>Read more<a class="headerlink" href="#read-more" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Using the Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#executing-within-site-lifecycle">Executing within <code class="docutils literal highlight highlight-default"><span></span><span class="n">site</span></code> lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html#overriding-default-maven-site">Overriding default Maven site</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic-usage.html#generating-documentation-as-a-project-report">Generating documentation as a project report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#executing-within-normal-lifecycle">Executing within normal lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#using-plantuml">Using PlantUML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id1">GraphViz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#plantuml-config">PlantUML Config</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#using-inline-syntax-highlighting">Using inline syntax highlighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#a-note-on-memory-usage">A note on memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html#sample-documentation-config">Sample Documentation Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="basic-usage.html" class="btn btn-neutral float-right" title="Using the Plugin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Trustin Lee et al.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="github-fork-ribbon-wrapper right">
+  <div class="github-fork-ribbon">
+    <a href="https://github.com/trustin/sphinx-maven-plugin">Fork me on GitHub</a>
+  </div>
+</div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.6.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
